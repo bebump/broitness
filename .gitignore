@@ -1,0 +1,12 @@
+cmake-build*
+.idea
+.vscode
+build/
+_build/
+bin/
+.DS_Store
+__pycache__
+.mypy_cache
+.tmp*
+*.tmp
+JuceLibraryCode
