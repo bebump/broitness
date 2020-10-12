@@ -1,5 +1,6 @@
 cmake-build*
 .idea
+.vs
 .vscode
 build/
 _build/
@@ -10,3 +11,4 @@ __pycache__
 .tmp*
 *.tmp
 JuceLibraryCode
+obj
