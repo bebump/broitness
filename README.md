@@ -17,6 +17,6 @@ will build everything in a temp directory and install the build artifacts to
 the `install` directory of the repository.
 
 If you also have InnoSetup on your computer you can run the `.iss` installer
-generator script after the build is finished, which will wrap up the
-executable to an installer that can automatically launch the program after
-Windows startup.
+generator script from the `install` directory after the build is finished, 
+which will wrap up the executable to an installer that can automatically launch
+the program after Windows startup.
