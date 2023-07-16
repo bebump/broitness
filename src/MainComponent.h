@@ -2,6 +2,7 @@
 
 #include "Monitor.h"
 #include "components/BrightnessControl.h"
+#include "components/LogComponent.h"
 
 #include <juce_gui_extra/juce_gui_extra.h>
 
@@ -101,6 +102,7 @@ private:
     std::vector<std::unique_ptr<BrightnessControl>> brightnessControls;
     ValueTree r;
     RulesInfoComponent rules;
+    LogComponent logComponent;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

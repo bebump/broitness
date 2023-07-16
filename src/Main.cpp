@@ -1,8 +1,41 @@
 #include "BinaryData.h"
 #include "Device.h"
 #include "MainComponent.h"
+#include "Logger.h"
 
 #include <functional>
+#include <format>
+
+static std::string enumToString (DeviceChangeDetector::DeviceEvent event)
+{
+    using Enum = DeviceChangeDetector::DeviceEvent;
+
+    if (event == Enum::arrival)
+        return "arrival";
+
+    if (event == Enum::displayChange)
+        return "displayChange";
+
+    if (event == Enum::removeComplete)
+        return "removeComplete";
+
+    jassertfalse;
+    return "";
+}
+
+static std::string enumToString (DeviceChangeDetector::DeviceType type)
+{
+    using Enum = DeviceChangeDetector::DeviceType;
+
+    if (type == Enum::hid)
+        return "hid";
+
+    if (type == Enum::display)
+        return "display";
+
+    jassertfalse;
+    return "";
+}
 
 class GuiAppApplication : public juce::JUCEApplication
 {
@@ -134,6 +167,10 @@ public:
 
         void onDeviceChange (DeviceChangeDetector::DeviceEvent event, DeviceChangeDetector::DeviceType type)
         {
+            bbmp::Logger::getInstance().writeLine (std::format ("Device change! Type: {} Event: {}",
+                                                                enumToString (type),
+                                                                enumToString (event)));
+
             const auto tryChangeInput = [&]
             {
                 if (Monitors::getInstance().getNumMonitors() == 0)

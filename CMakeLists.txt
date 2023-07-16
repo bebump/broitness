@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
 
-project(bebump_broitness VERSION 0.9.2)
+project(bebump_broitness VERSION 0.9.3)
 
 add_subdirectory(../JUCE-dev ${CMAKE_CURRENT_BINARY_DIR}/JUCE-dev)
 
@@ -12,8 +12,12 @@ target_sources(bebump_broitness
         src/MainComponent.cpp
         src/Monitor.h
         src/Monitor.cpp
+        src/Logger.h
+        src/Observable.h
         src/components/BrightnessControl.h
-        src/components/BrightnessControl.cpp)
+        src/components/BrightnessControl.cpp
+        src/components/LogComponent.h
+        src/components/LogComponent.cpp)
 
 if(WIN32)
     target_sources(bebump_broitness
@@ -27,7 +31,7 @@ else(APPLE)
             src/native/DeviceMacOS.cpp)
 endif()
 
-set_property(TARGET bebump_broitness PROPERTY CXX_STANDARD 17)
+set_property(TARGET bebump_broitness PROPERTY CXX_STANDARD 20)
 
 target_compile_definitions(bebump_broitness
     PRIVATE

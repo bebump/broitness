@@ -8,6 +8,7 @@ MainComponent::MainComponent() : rules (r)
     Monitors::getInstance().addListener (*this);
     update();
     addAndMakeVisible (rules);
+    addAndMakeVisible (logComponent);
     setSize (320, 100 + 300);
 }
 
@@ -57,6 +58,8 @@ void MainComponent::resized()
 {
     auto bounds = getLocalBounds();
     rules.setBounds (bounds.removeFromBottom (100));
+
+    logComponent.setBounds (bounds.removeFromBottom (200));
 
     const auto width         = bounds.getWidth();
     const auto controlHeight = 70;
